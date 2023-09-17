@@ -162,6 +162,20 @@ textarea {
 	object-position: center;
 }
 
+/* ==================== SLIDER LOGIC*/
+.gallery:has(#input1:checked) .slider .slider-track {
+	transform: translateX(0);
+}
+.gallery:has(#input2:checked) .slider .slider-track {
+	transform: translateX(-100%);
+}
+.gallery:has(#input3:checked) .slider .slider-track {
+	transform: translateX(-200%);
+}
+.gallery:has(#input4:checked) .slider .slider-track {
+	transform: translateX(-300%);
+}
+
 /* ==================== TITLES */
 .titles {
 	order: 2;
