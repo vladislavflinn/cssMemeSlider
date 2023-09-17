@@ -192,4 +192,18 @@ textarea {
 	padding-left: 0.625rem;
 }
 
+/* ==================== TITLES LOGIC */
+.gallery:has(#input1:checked) .titles .title-track {
+	transform: translateX(0);
+}
+.gallery:has(#input2:checked) .titles .title-track {
+	transform: translateX(-200%);
+}
+.gallery:has(#input3:checked) .titles .title-track {
+	transform: translateX(-400%);
+}
+.gallery:has(#input4:checked) .titles .title-track {
+	transform: translateX(-600%);
+}
+
 /* ==================== MEDIA */
