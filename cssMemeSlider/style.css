@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+* {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -45,8 +43,6 @@ body {
 	font-size: 1.5rem;
 	font-weight: 400;
 	line-height: 1;
-	color: #fff;
-	background-color: #202020;
 }
 
 button {
@@ -61,4 +57,183 @@ textarea {
 	font-size: inherit;
 	font-weight: inherit;
 	color: inherit;
+}
+
+/* ==================== */
+:root {
+	--color-text: #fafafa;
+	--color-bg: #202020;
+	--color-gallery-bg: #262626;
+	--color-slider-bg: #333333;
+	--color-pagination: #55e052;
+	--color-pagination-hover: #e0d252;
+	--color-pagination-active: #e05252;
+}
+
+/* ==================== */
+body {
+	color: var(--color-text);
+	background-color: var(--color-bg);
+}
+.wrapper {
+	overflow: hidden;
+	min-height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	max-width: 50rem;
+	margin: 0 auto;
+}
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	row-gap: 1.25rem;
+
+	padding-bottom: 1.25rem;
+	border-radius: 0.625rem;
+	overflow: hidden;
+
+	background-color: var(--color-gallery-bg);
+}
+
+/* ==================== INPUTS */
+.inputs {
+	order: 3;
+	flex: 0 0 50%;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	column-gap: 0.25rem;
+
+	padding-right: 0.625rem;
+}
+.input {
+	display: none;
+}
+.label {
+	padding: 0.3125rem;
+	cursor: pointer;
+}
+.pagination {
+	width: 1rem;
+	height: 1rem;
+
+	background-color: var(--color-pagination);
+	border: 0.125rem solid var(--color-pagination);
+	border-radius: 50%;
+
+	transition: all 0.5s ease 0s;
+}
+.input:checked + .label .pagination {
+	background-color: transparent;
+	border: 0.125rem solid var(--color-pagination);
+}
+
+/* ==================== INPUTS EFFECTS*/
+.label:hover .pagination {
+	background-color: var(--color-pagination-hover);
+	border: 0.125rem solid var(--color-pagination-hover);
+}
+.label:active .pagination {
+	background-color: var(--color-pagination-active);
+	border: 0.125rem solid var(--color-pagination-active);
+	transition: none;
+}
+.input:checked + .label:hover .pagination {
+	background-color: transparent;
+	border: 0.125rem solid var(--color-pagination-hover);
+}
+.input:checked + .label:active .pagination {
+	background-color: transparent;
+	border: 0.125rem solid var(--color-pagination-active);
+	transition: none;
+}
+
+/* ==================== SLIDER */
+.slider {
+	order: 1;
+	flex: 0 0 100%;
+	max-width: 50rem;
+	overflow: hidden;
+	background-color: var(--color-slider-bg);
+}
+.slider-track {
+	display: flex;
+
+	transition: transform 0.5s ease 0s;
+}
+.image {
+	flex: 0 0 100%;
+	width: 100%;
+	height: 37.5rem;
+	object-fit: contain;
+	object-position: center;
+}
+
+/* ==================== SLIDER LOGIC*/
+.gallery:has(#input1:checked) .slider .slider-track {
+	transform: translateX(0);
+}
+.gallery:has(#input2:checked) .slider .slider-track {
+	transform: translateX(-100%);
+}
+.gallery:has(#input3:checked) .slider .slider-track {
+	transform: translateX(-200%);
+}
+.gallery:has(#input4:checked) .slider .slider-track {
+	transform: translateX(-300%);
+}
+
+/* ==================== TITLES */
+.titles {
+	order: 2;
+	flex: 0 0 50%;
+	height: 2rem;
+	overflow: hidden;
+}
+.title-track {
+	display: flex;
+	flex-direction: column;
+
+	transition: transform 0.5s ease 0s;
+}
+.title {
+	flex: 0 0 2rem;
+	display: flex;
+	align-items: center;
+	padding-left: 0.625rem;
+}
+
+/* ==================== TITLES LOGIC */
+.gallery:has(#input1:checked) .titles .title-track {
+	transform: translateY(0);
+}
+.gallery:has(#input2:checked) .titles .title-track {
+	transform: translateY(-25%);
+}
+.gallery:has(#input3:checked) .titles .title-track {
+	transform: translateY(-50%);
+}
+.gallery:has(#input4:checked) .titles .title-track {
+	transform: translateY(-75%);
+}
+
+/* ==================== MEDIA */
+@media screen and (max-width: 48em) {
+	.titles {
+		order: 3;
+		flex: 0 0 100%;
+	}
+	.inputs {
+		order: 2;
+		flex: 0 0 100%;
+
+		justify-content: center;
+		padding-right: 0;
+	}
 }
